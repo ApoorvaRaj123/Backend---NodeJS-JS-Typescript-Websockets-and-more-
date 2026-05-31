@@ -113,3 +113,42 @@ const Config: Readonly<config> = {
     endpoint: "https://api.example.com",
     apikey: "abcdef123456789"
 }
+
+
+// Record and Map
+
+interface Animal {
+  name: string;
+  age: number;
+}
+
+// type Animals = {
+//   [key: string] : Animal
+// }
+
+type Animals = Record<string, Animal>
+
+const animals: Animals = {
+  "Lion" : {name:"Leon", age:10},
+  "Snow Leopard" : {name:"Tai Lung", age:25}
+}
+
+
+// MAP
+
+
+let mapp = new Map()
+
+mapp.set("Snow Leopard", {name:"Tai Lung", age:25})
+mapp.set("Lion", {name:"Leon", age:10})
+
+
+//  Exclude 
+
+type Event = "click" | "scroll" |"mousemove";
+type ExcludeEvent = Exclude<Event, "scroll">;
+
+const handleEvent = (event:ExcludeEvent) => {
+  console.log(`Handling Event : ${event}`); 
+}
+handleEvent("click");
